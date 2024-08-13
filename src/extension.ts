@@ -10,8 +10,6 @@ const NEKOWEB_UPLOAD_FILE = '/files/upload';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "hello-world" is now active!');
-
 	const setAuthTokenCommand = vscode.commands.registerCommand('nekoweb.setAuthorizationToken', async () => {
 		const authToken = await vscode.window.showInputBox({
 			prompt: 'Enter your authorization token',
