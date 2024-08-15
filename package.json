@@ -1,8 +1,20 @@
 {
-  "name": "nekoweb",
-  "displayName": "hello-world",
-  "description": "says hi",
-  "version": "0.0.1",
+  "name": "vscode-nekoweb",
+  "displayName": "vscode-nekoweb",
+  "description": "Allows you to download and upload HTML files to a Nekoweb site",
+  "type": "module",
+  "version": "1.0.0",
+  "author": "Phil Wilson (https://philwilson.org/)",
+  "publisher": "philwilson-org",
+  "pricing": "Free",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pipwilson/vscode-nekoweb.git"
+  },
+  "keywords": [
+    "nekoweb",
+    "website"
+  ],
   "engines": {
     "vscode": "^1.92.0"
   },
@@ -73,10 +85,11 @@
     "esbuild": "^0.21.5",
     "eslint": "^8.57.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vscode": "^1.1.37"
   },
   "dependencies": {
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "form-data": "^4.0.0",
     "node-fetch": "^3.3.2",
     "ts-node": "^10.9.2"

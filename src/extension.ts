@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		const htmlFiles = response.data.filter((file: { name: string; }) => file.name.endsWith('.html')).map((file: { name: string; }) => file.name)
+		const htmlFiles = response.data.filter((file: { name: string; }) => file.name.endsWith('.html')).map((file: { name: string; }) => file.name);
 		const selectedOption = await vscode.window.showQuickPick(htmlFiles, { placeHolder: 'Select an HTML file' });
 
 		if (selectedOption) {
@@ -87,7 +87,7 @@ export function activate(context: vscode.ExtensionContext) {
 				const { data } = await axios.request(options);
 				console.log(data);
 				vscode.window.showInformationMessage('File uploaded successfully');
-			} catch (error) {
+			} catch (error: any) {
 				console.error(error);
 				vscode.window.showErrorMessage(`Error uploading file: ${error.message}`);
 			}
@@ -101,9 +101,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(setAuthTokenCommand);
 	context.subscriptions.push(helloWorldCommand);
 	context.subscriptions.push(readFolderCommand);
+	context.subscriptions.push(uploadFileCommand);
 }
 
-async function getApiResponse(apiMethod: string, options: { [key: string]: any } = {}): Promise<string | axios.AxiosResponse<any, any>> {
+async function getApiResponse(apiMethod: string, options: { [key: string]: any } = {}): Promise<string | AxiosResponse<any, any>> {
 	try {
 		const apiEndpoint = NEKOWEB_API;
 		const config = vscode.workspace.getConfiguration('nekoweb');
